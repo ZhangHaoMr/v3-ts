@@ -8,7 +8,22 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/home",
     name: "home",
-    component: () => import("../views/HomeView.vue")
+    component: () => import("@/views/home/HomeView.vue"),
+    children: [
+      {
+        path: "/main/analysis/dashboard",
+        name: "/main/analysis/dashboard",
+        component: () => import("@/views/main/analysis/dashboard.vue"),
+        meta: {
+          title: "分析表"
+        }
+      },
+      {
+        path: "/main/analysis/overview",
+        name: "/main/analysis/overview",
+        component: () => import("@/views/main/analysis/overview.vue")
+      }
+    ]
   },
   {
     path: "/about",

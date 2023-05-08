@@ -8,13 +8,15 @@ import "normalize.css";
 import "@/assets/css/index.less";
 import "element-plus/dist/index.css";
 
-// 按需 引入 element 组件
-import { globalRegister } from "./global";
-
 // 引入路由守卫
 import "./guard";
 
-const app = createApp(App);
+// 引入 图标
+import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
-app.use(globalRegister);
+const app = createApp(App);
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component);
+}
+
 app.use(store).use(router).mount("#app");
