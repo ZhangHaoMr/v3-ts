@@ -8,7 +8,7 @@ export const service = new Request({
   interceptors: {
     requestInterceptor: (config) => {
       const token = LocalCache.getCache("token");
-      console.log("token", token);
+      // console.log("token", token);
 
       // console.log("局部请求成功拦截器");
       if (token) config.headers.Authorization = "Bearer " + token;

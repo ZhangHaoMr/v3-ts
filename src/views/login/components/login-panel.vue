@@ -48,7 +48,7 @@ const loginAccountRef = ref<InstanceType<typeof loainAccount>>();
 
 // 立即登录方法
 const handleLoginClick = () => {
-  console.log("立即登录");
+  // console.log("立即登录");
   if (currentTab.value == "account") {
     // 账号密码登录
     loginAccountRef.value?.loginAction(isKeepPassword.value);

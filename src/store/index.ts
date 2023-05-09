@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 import { IStorState } from "./type";
 import loginModule from "./login";
 
-export default createStore<IStorState>({
+const store = createStore<IStorState>({
   state: {},
   getters: {},
   mutations: {},
@@ -11,3 +11,8 @@ export default createStore<IStorState>({
     loginModule
   }
 });
+export default store;
+
+export function setupStore() {
+  store.dispatch("loginModule/getLogin");
+}

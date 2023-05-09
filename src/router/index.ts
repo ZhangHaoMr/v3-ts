@@ -8,37 +8,22 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/home",
     name: "home",
-    component: () => import("@/views/home/HomeView.vue"),
-    children: [
-      {
-        path: "/main/analysis/dashboard",
-        name: "/main/analysis/dashboard",
-        component: () => import("@/views/main/analysis/dashboard.vue"),
-        meta: {
-          title: "分析表"
-        }
-      },
-      {
-        path: "/main/analysis/overview",
-        name: "/main/analysis/overview",
-        component: () => import("@/views/main/analysis/overview.vue")
-      }
-    ]
-  },
-  {
-    path: "/about",
-    name: "about",
-    component: () => import("../views/AboutView.vue")
+    component: () => import("@/views/home/HomeView.vue")
   },
   {
     path: "/login",
     name: "login",
     component: () => import("@/views/login/login.vue")
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: () => import("@/views/NotFound.vue")
   }
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 });
 

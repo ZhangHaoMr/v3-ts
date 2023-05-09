@@ -19,7 +19,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import Aside from "./components/HomeAside.vue";
-import Header from "./components/HomeHeader.vue";
+import Header from "./components/HomeHeader/HomeHeader.vue";
 
 const showIcon = ref<boolean>(false);
 

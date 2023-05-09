@@ -7,7 +7,7 @@
     <el-menu
       background-color="#031527"
       class="el-menu-vertical-demo"
-      :default-active="menus[0].children[0].url"
+      :default-active="$route.path"
       text-color="#e6e8ea"
       unique-opened
       :collapse="isShowIcon"
