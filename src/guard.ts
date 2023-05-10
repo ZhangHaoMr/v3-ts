@@ -1,6 +1,6 @@
 import router from "./router";
 import localCache from "@/utils/cache";
-import { filstMenu } from "@/utils/router-menu";
+// import { filstMenu } from "@/utils/router-menu";
 
 router.beforeEach((to) => {
   const token = localCache.getCache("token");
@@ -10,6 +10,7 @@ router.beforeEach((to) => {
     }
   }
   if (to.path === "/home") {
-    if (filstMenu) return filstMenu;
+    const menu = localCache.getCache("userMenu");
+    return menu[0]?.children[0].url;
   }
 });

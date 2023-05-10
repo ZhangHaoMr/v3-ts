@@ -11,8 +11,8 @@ const loginModule: Module<ILoginState, IStorState> = {
   namespaced: true,
   state: {
     token: "",
-    userInfo: LocalCache.getCache("userInfo") ?? {},
-    userMenu: LocalCache.getCache("userMenu") ?? []
+    userInfo: {},
+    userMenu: []
   },
   getters: {},
   mutations: {
@@ -49,6 +49,7 @@ const loginModule: Module<ILoginState, IStorState> = {
         const userMenu = await getMenus(id);
         commit("storeUserInfo", userInfo.data);
         commit("storeMenus", userMenu.data);
+
         LocalCache.setCache("userInfo", userInfo.data);
         LocalCache.setCache("userMenu", userMenu.data);
         router.push("/");
