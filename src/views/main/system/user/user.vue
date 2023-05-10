@@ -1,18 +1,18 @@
 <template>
   <div class="user">
-    <h2>user</h2>
+    <Form v-bind="searchFormConfig" />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "user",
-  setup() {
-    return {};
-  }
-});
+<script lang="ts" setup>
+import Form from "@/baseUI/from";
+import { searchFormConfig } from "./user";
 </script>
 
-<style scoped></style>
+<style scoped>
+.user {
+  width: 100%;
+  border-radius: 10px;
+  background-color: #fff;
+}
+</style>

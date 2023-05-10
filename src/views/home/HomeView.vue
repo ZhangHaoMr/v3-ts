@@ -41,6 +41,7 @@ const getShowIcon = (isShowIcon: boolean) => {
       transition: width 0.5s linear;
     }
     .el-main {
+      height: 100%;
       background-color: #f1f2f6;
     }
   }

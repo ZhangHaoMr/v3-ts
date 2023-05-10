@@ -1,3 +1,3 @@
 export interface IStorState {
-[x: string]: any;
+  [x: string]: any;
 }
