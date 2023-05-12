@@ -1,10 +1,13 @@
 <template>
   <div class="from">
+    <div class="header">
+      <slot name="header"></slot>
+    </div>
     <el-form :label-width="labelWidth">
       <el-row>
         <template v-for="(item, index) in formArr" :key="index">
           <el-col :span="8">
-            <el-form-item :label="item.label">
+            <el-form-item :style="itemStyle" :label="item.label">
               <template
                 v-if="item.type === 'input' || item.type === 'password'"
               >
@@ -12,10 +15,17 @@
                   :type="item.type"
                   :show-password="item.type === 'password'"
                   :placeholder="item.placeholder"
+                  v-bind="item.otherOptions"
+                  v-model="formData[item.filed]"
                 />
               </template>
               <template v-else-if="item.type === 'select'">
-                <el-select style="width: 100%" :placeholder="item.placeholder">
+                <el-select
+                  style="width: 100%"
+                  v-bind="item.otherOptions"
+                  :placeholder="item.placeholder"
+                  v-model="formData[item.filed]"
+                >
                   <el-option
                     v-for="(option, index) in item.options"
                     :label="option.label"
@@ -28,8 +38,8 @@
               <template v-else-if="item.type === 'datepicker'">
                 <el-date-picker
                   style="width: 100%"
-                  type="daterange"
                   v-bind="item.otherOptions"
+                  v-model="formData[item.filed]"
                 ></el-date-picker>
               </template>
             </el-form-item>
@@ -37,13 +47,20 @@
         </template>
       </el-row>
     </el-form>
+    <div class="footer">
+      <slot name="footer"></slot>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
-import { defineProps, PropType } from "vue";
+import { ref, defineProps, PropType, watch, defineEmits } from "vue";
 import { IFormItems } from "@/baseUI/from";
 
-defineProps({
+const prop = defineProps({
+  modelValue: {
+    type: Object,
+    required: true
+  },
   formArr: {
     type: Array as PropType<IFormItems[]>,
     default: () => []
@@ -67,6 +84,18 @@ defineProps({
     })
   }
 });
+
+const formData = ref({ ...prop.modelValue });
+const emits = defineEmits(["updata:formData"]);
+watch(
+  formData,
+  (newValue) => {
+    emits("updata:formData", newValue);
+  },
+  {
+    deep: true
+  }
+);
 </script>
 
 <style lang="scss">
@@ -74,6 +103,11 @@ defineProps({
   padding: 10px;
   .el-form {
     width: 100%;
+  }
+  .footer {
+    display: flex;
+    justify-content: right;
+    margin: 0 0 10px 10px;
   }
 }
 </style>

@@ -1,18 +1,18 @@
 <template>
   <div class="role">
-    <h2>role</h2>
+    <pageForm :searchFormConfig="searchFormConfig" />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "role",
-  setup() {
-    return {};
-  }
-});
+<script lang="ts" setup>
+import pageForm from "@/components/page-form";
+import { searchFormConfig } from "./role";
 </script>
 
-<style scoped></style>
+<style scoped>
+.role {
+  width: 100%;
+  border-radius: 10px;
+  background-color: #fff;
+}
+</style>

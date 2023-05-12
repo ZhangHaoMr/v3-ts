@@ -9,7 +9,9 @@
           <Header @isShowIcon="getShowIcon" />
         </el-header>
         <el-main>
-          <router-view></router-view>
+          <div class="main">
+            <router-view></router-view>
+          </div>
         </el-main>
       </el-container>
     </el-container>
@@ -43,6 +45,10 @@ const getShowIcon = (isShowIcon: boolean) => {
     .el-main {
       height: 100%;
       background-color: #f1f2f6;
+      .main {
+        background-color: #fff;
+        border-radius: 10px;
+      }
     }
   }
 }

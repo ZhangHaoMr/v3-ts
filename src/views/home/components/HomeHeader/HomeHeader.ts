@@ -14,7 +14,7 @@ const HandleIsShowIcon = () => {
 // 退出登录
 const logout = () => {
   LocalCache.clearCache();
-  router.push("/");
+  router.push("/login");
 };
 
 const handleCommand = (k: string) => {

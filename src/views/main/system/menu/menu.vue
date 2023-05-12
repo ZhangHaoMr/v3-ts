@@ -1,18 +1,18 @@
 <template>
   <div class="menu">
-    <h2>menu</h2>
+    <pageForm :searchFormConfig="searchFormConfig" />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "menu",
-  setup() {
-    return {};
-  }
-});
+<script lang="ts" setup>
+import pageForm from "@/components/page-form";
+import { searchFormConfig } from "./menu";
 </script>
 
-<style scoped></style>
+<style scoped>
+.menu {
+  width: 100%;
+  border-radius: 10px;
+  background-color: #fff;
+}
+</style>

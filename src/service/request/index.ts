@@ -85,18 +85,18 @@ class Request {
     });
   }
 
-  get<T>(config: requestConfig): Promise<T> {
+  get<T = any>(config: requestConfig): Promise<T> {
     return this.request({ ...config, method: "GET" });
   }
-  post<T>(config: requestConfig): Promise<T> {
-    console.log(config);
+  post<T = any>(config: requestConfig): Promise<T> {
+    // console.log(config);
 
     return this.request({ ...config, method: "POST" });
   }
-  put<T>(config: requestConfig): Promise<T> {
+  put<T = any>(config: requestConfig): Promise<T> {
     return this.request({ ...config, method: "PUT" });
   }
-  delete<T>(config: requestConfig): Promise<T> {
+  delete<T = any>(config: requestConfig): Promise<T> {
     return this.request({ ...config, method: "DELETE" });
   }
 }
