@@ -1,18 +1,22 @@
 <template>
   <div class="category">
-    <h2>category</h2>
+    <pageForm :searchFormConfig="searchFormConfig" />
+    <div class="content">
+      <pageConent :contentConfig="contentConfig" url="/category" />
+    </div>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "category",
-  setup() {
-    return {};
-  }
-});
+<script lang="ts" setup>
+import pageForm from "@/components/page-form";
+import pageConent from "@/components/page-content";
+import { searchFormConfig } from "./config/category-form";
+import { contentConfig } from "./config/category-content";
 </script>
 
-<style scoped></style>
+<style scoped>
+.content {
+  border-top: 20px solid #f5f5f5;
+  padding: 20px;
+}
+</style>

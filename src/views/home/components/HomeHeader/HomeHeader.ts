@@ -1,7 +1,7 @@
 import { ref, defineEmits } from "vue";
 import LocalCache from "@/utils/cache";
-import { useRouter } from "vue-router";
-const router = useRouter();
+import router from "@/router";
+// const router = useRouter();
 
 const isShowIcon = ref<boolean>(false);
 
@@ -14,7 +14,7 @@ const HandleIsShowIcon = () => {
 // 退出登录
 const logout = () => {
   LocalCache.clearCache();
-  router.push("/login");
+  router.back();
 };
 
 const handleCommand = (k: string) => {

@@ -2,25 +2,16 @@
   <div class="user">
     <pageForm :searchFormConfig="searchFormConfig" />
     <div class="content">
-      <ListTable :tableData="usersList" :propsList="propsList">
-        <template #enable="scope">
-          <el-button
-            size="small"
-            :type="scope.row.enable ? 'primary' : 'danger'"
-            plain
-          >
-            {{ scope.row.enable ? "启用" : "禁用" }}
-          </el-button>
-        </template>
-      </ListTable>
+      <pageConent :contentConfig="contentConfig" url="/users" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import pageForm from "@/components/page-form";
-import ListTable from "@/baseUI/table";
-import { searchFormConfig, propsList, usersList } from "./user";
+import pageConent from "@/components/page-content";
+import { contentConfig } from "./config/user-content";
+import { searchFormConfig } from "./config/user-form";
 </script>
 
 <style scoped>
